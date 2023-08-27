@@ -3,9 +3,7 @@ import axios from 'axios'
 import {GlobalState} from '../../../GlobalState'
 import Loading from '../utils/loading/Loading'
 import { useHistory, useParams } from 'react-router-dom'
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import UploadImg from './upload.png'
 
 const initialState = {
     product_id: '',
@@ -128,110 +126,122 @@ function CreateProduct() {
     }
     return (
         <div className="create_product">
-            <div className="upload">
-                <input type="file" name="file" id="file_up" onChange={handleUpload}/>
-                {
-                    loading ? <div id="file_img"><Loading /></div>
+{/* ///////////////////////////////////////////////////////////////////////////////////////////////// */}
 
-                        : <div id="file_img" style={styleUpload}>
-                            {images ? <img src={images.url}/> : <PhotoLibraryIcon/>}
-                        <span onClick={handleDestroy}>X</span>
-                    </div>
-                }
-                
-            </div>
+<div className="max-w-4xl mx-auto mt-7 px-3 md:px-0">
+			<h1 className="text-black font-bold text-center md:text-left text-2xl">
+				Add Product
+			</h1>
 
-            <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <TextField
-                        fullWidth id="outlined-basic"
-                        label="Product Id"
-                        variant="outlined"
+			<div className="md:grid grid-cols-2 mt-6 mb-16 md:mb-8">
+                <form action="">
+                <div className="md:w-[320px] md:ml-12">
+					<input 
+                         placeholder="Product Id"
+						className="border text-gray-900 placeholder-gray-900 border-gray-800 w-full py-1 focus:border-[#005395] px-2 focus-visible:outline-none" 
                         name="product_id"
-                        type="number" required
+                        type="number" 
+                        required
                         value={product.product_id}
                         onChange={handleChangeInput}
                         disabled={onEdit} />
-                </div>
-
-                <div className="row">
-                    <TextField
-                        fullWidth id="outlined-basic"
-                        label="Title"
-                        variant="outlined"
+					<input 
+                        type="text" 
+                        placeholder="Title"
                         name="title"
                         required
                         value={product.title}
-                        onChange={handleChangeInput} />
-                    
-                </div>
-
-                <div className="row">
-                    <TextField fullWidth
-                        id="outlined-basic"
-                        label="Price"
-                        variant="outlined"
+                        onChange={handleChangeInput} 
+						className="border text-gray-900 mt-3 placeholder-gray-900 border-gray-800 w-full py-1 focus:border-[#005395] px-2 focus-visible:outline-none" />
+					<input 
+                        type="number" 
+                        placeholder="Price &nbsp; &nbsp; &nbsp; $00"
+						className="border text-gray-900 mt-3 placeholder-gray-900 border-gray-800 w-full pt-2 pb-1 focus:border-[#005395] px-2 focus-visible:outline-none" 
                         name="price"
-                        type="number"
                         required
                         value={product.price}
-                        onChange={handleChangeInput} />
-                    
-                </div>
-
-                <div className="row">
-            
-                    
-                    <TextField
-                        fullWidth
-                        id="outlined-multiline-static"
-                        label="Description"
-                        multiline
-                        rows={5}
-                        variant="outlined" value={product.description} onChange={handleChangeInput}
-                        type="text" name="description"
-        />
-                </div>
-
-                <div className="row">
-                    
-                    <TextField
-                        fullWidth
+                        onChange={handleChangeInput}/>
+                    <textarea 
+                            placeholder="Description" 
+                            rows="5" 
+                            className="border text-gray-900 mt-3 placeholder-gray-900 border-gray-800 w-full pt-2 pb-1 focus:border-[#005395] px-2 focus-visible:outline-none"
+                            multiline
+                     
+                        variant="outlined" 
+                        value={product.description}
+                         onChange={handleChangeInput}
+                        type="text" 
+                        name="description">
+                    </textarea>
+					<textarea 
+                        placeholder="Content" 
+                        rows="4"
+                        className="border text-gray-900 mt-2 placeholder-gray-900 border-gray-800 w-full pt-2 pb-1 focus:border-[#005395] px-2 focus-visible:outline-none"
                         name="content"
                         id="outlined-multiline-static"
                         label="Content"
                         multiline
-                        rows={7}
-                        variant="outlined"
                         required
-                        value={product.content}  onChange={handleChangeInput}
-                    />
-                </div>
+                        value={product.content} 
+                         onChange={handleChangeInput}
+                     
+                     >
 
-                <div className="row">
+                     </textarea>
+
+					<select 
+                    className="border-b border-t-0 border-r-0 border-l-0 text-gray-900 mt-3 placeholder-gray-900 border-gray-800 w-full pt-2 pb-1 px-2 focus:ring-transparent"
+                    name="category"
+                    label="Category"
+                    value={product.category}
+                    onChange={handleChangeInput}>
 
 
-                    <TextField
-                        fullWidth
-                        name="category"
-                        id="standard-select-currency"
-                        select
-                        label="Category"
-                        value={product.category}
-                        onChange={handleChangeInput}
-                        helperText="Please select a category"
-        >
-                    {categories.map((category) => (
-                        <MenuItem key={category._id} value={category._id}>
-                        {category.name}
-                        </MenuItem>
+                       {categories.map((category) => (
+                        <option key={category._id} value={category._id}>{category.name}</option>
                     ))}
-                    </TextField>
-                    
-                </div>
+					
+					</select>
+					<label className="text-[10px] text-gray-900">Please select a Category</label>
+					<button className="bg-[#007A4D] py-3 text-xl w-full text-center rounded-md mt-8 text-white hover:opacity-90">Create Product</button>
+				</div>
 
-                <button type="submit">{onEdit? "Update" : "Create Product"}</button>
-            </form>
+                </form>
+	
+				<div className="mt-8 md:mt-0">
+					<div className="flex justify-end">
+
+
+                    {
+                    loading ? <div id="file_img"><Loading /></div>
+
+                        : 
+                        <div className="bg-[#E8E7E7] md:w-[380px] w-full flex items-center justify-center h-[350px]">
+						<div>
+							<div className="flex justify-center">
+                            <span onClick={handleDestroy}>X</span>
+                                {images ? <img src={images.url}/> : 	<img src={UploadImg} alt="" />}
+							</div>
+							<h3 className="text-lg text-black mt-2 font-semibold">Click button below to upload image</h3>
+						</div>
+					</div>
+          
+                }
+
+
+					</div>
+					<div className="flex justify-end">
+						<label for="file-input" className="cursor-pointer">
+							<input name="file"  onChange={handleUpload} id="file-input" type="file" className="sr-only" />
+							<p className="bg-transparent border border-black w-[380px] py-2 text-lg text-center mt-4 text-black hover:opacity-90">Select from system</p>
+						</label>
+					</div>
+				</div>	
+			</div>
+
+	</div>
+{/* ////////////////////////////////////////////////////////////////////////////////////////////////// */}
+          
         </div>
     )
 }

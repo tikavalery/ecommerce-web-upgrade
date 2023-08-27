@@ -1,8 +1,5 @@
 import React, {useContext, useState} from 'react'
 import {GlobalState} from '../../GlobalState'
-import Menu from './icon/menu.svg'
-import Close from './icon/close.svg'
-import Cart from './icon/cart.svg'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import basket from './akar-icons_cart.png'
@@ -34,14 +31,7 @@ function Header() {
         )
     }
 
-//     <div className="bg-[#005395]">
-//     <div className="md:max-w-4xl md:mx-auto flex justify-end py-4">
-//         <a href="/products.html" className="text-white text-xs md:text-sm hover:text-opacity-95 cursor-pointer mr-3 md:mr-8">Products</a>
-//         <a href="#" className="text-white text-xs md:text-sm hover:text-opacity-95 cursor-pointer mr-3 md:mr-8">Create Proudcts</a>
-//         <a href="/categories.html" className="text-white text-xs md:text-sm hover:text-opacity-95 cursor-pointer mr-3 md:mr-8">Categories</a>
-//         <a href="/order.html" className="text-white text-xs md:text-sm hover:text-opacity-95 cursor-pointer mr-3 md:mr-8">Customer Orders</a>
-//     </div>
-// </div>
+
 
     const loggedRouter = () =>{
         return(
@@ -61,9 +51,7 @@ function Header() {
     return (
         <div className="bg-[#005395]">
                 <div className="md:max-w-4xl md:mx-auto flex justify-end py-4">
-            {/* <div className="menu" onClick={() => setMenu(!menu)}>
-                <img src={Menu} alt="" width="30" />
-            </div> */}
+    
 
             
                 
@@ -80,7 +68,6 @@ function Header() {
                 }
 
              
-                    {/* <img onClick={() => setMenu(!menu)} src={Close} alt="" width="30" className="menu" /> */}
                 
 
             
