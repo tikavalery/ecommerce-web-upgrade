@@ -7,14 +7,7 @@ const cookieParser = require('cookie-parser')
 const path = require('path')
 const valiboy = "Yes"
 const bigie = "why"
-//tikavalery
-//I431gdXTLBNvuIJj
-// username:valery@yahoo.com    
-// password:Kellyrose2021@
 
-// Authority credentials
-//kellyrose2021@gmail.com
-//kellyrose2021
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
