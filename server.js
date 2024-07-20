@@ -6,6 +6,7 @@ const fileUpload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 const valiboy = "Yes"
+const bigie = "why"
 //tikavalery
 //I431gdXTLBNvuIJj
 // username:valery@yahoo.com    
